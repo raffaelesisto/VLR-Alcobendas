@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>IVL Alcobendas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 260px;
+      background: #f5f5f5;
+      border-right: 1px solid #ddd;
+      padding: 16px 12px;
+      overflow-y: auto;
+    }
+    .sidebar h1 {
+      font-size: 16px;
+      margin: 0 0 10px 0;
+    }
+    .sidebar h2 {
+      font-size: 13px;
+      margin: 12px 0 4px 0;
+      text-transform: uppercase;
+      color: #555;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding-left: 8px;
+      margin: 0;
+    }
+    .sidebar li {
+      margin: 2px 0;
+    }
+    .sidebar a {
+      font-size: 13px;
+      text-decoration: none;
+      color: #333;
+      cursor: pointer;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      flex: 1;
+      height: 100vh;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    .small-note {
+      font-size: 11px;
+      color: #777;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h1>IVL Alcobendas</h1>
+    <div class="small-note">
+      Haz clic en una sección para ir a la página correspondiente.
+    </div>
+
+    <!-- Aquí personalizas el índice con tus secciones y páginas -->
+    <h2>01 · Introducción</h2>
+    <ul>
+      <li><a onclick="abrirPagina(4)">1.1 Contexto global</a></li>
+      <li><a onclick="abrirPagina(6)">1.2 Contexto local</a></li>
+    </ul>
+
+    <h2>02 · Metodología</h2>
+    <ul>
+      <li><a onclick="abrirPagina(8)">2.1 Estrategia de desarrollo del IVL</a></li>
+      <li><a onclick="abrirPagina(8)">2.2 Marco de medición de la sostenibilidad</a></li>
+    </ul>
+
+    <h2>03 · Estrategias para el desarrollo sostenible</h2>
+    <ul>
+      <li><a onclick="abrirPagina(14)">3.1 Punto de partida</a></li>
+      <li><a onclick="abrirPagina(16)">3.2 Contribución de los proyectos</a></li>
+      <li><a onclick="abrirPagina(41)">3.3 Alineamiento presupuestario</a></li>
+      <li><a onclick="abrirPagina(45)">3.4 Modelo de gobernanza</a></li>
+      <li><a onclick="abrirPagina(46)">3.5 Análisis de coherencia de políticas CPDS</a></li>
+    </ul>
+
+    <h2>04 · Conclusiones</h2>
+    <ul>
+      <li><a onclick="abrirPagina(50)">4.1 Principales resultados</a></li>
+      <li><a onclick="abrirPagina(51)">4.2 Valor estratégico del IVL</a></li>
+    </ul>
+
+    <h2>05 · Anexos</h2>
+    <ul>
+      <li><a onclick="abrirPagina(55)">I. Ficha técnica</a></li>
+      <li><a onclick="abrirPagina(57)">II. Cuadro de mandos ODS</a></li>
+      <li><a onclick="abrirPagina(61)">III. Selección indicadores</a></li>
+      <li><a onclick="abrirPagina(85)">IV. Cadenas de efectos</a></li>
+      <li><a onclick="abrirPagina(89)">V. Valores y normalización</a></li>
+    </ul>
+
+    <h2>Volver al índice</h2>
+    <ul>
+      <li><a onclick="abrirPagina(3)">Tabla de contenidos</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <iframe
+      id="visorPdf"
+      src=""
+      title="IVL Alcobendas"
+    ></iframe>
+  </div>
+
+  <script>
+    // 👉 Sustituye TU_USUARIO y NOMBRE_REPO por los tuyos reales.
+    const BASE_URL = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://raw.githubusercontent.com/raffaelesisto/VLR-Alcobendas/main/VLR_interactivo_compressed.pdf";
+
+    function abrirPagina(numPagina) {
+      const iframe = document.getElementById('visorPdf');
+      iframe.src = BASE_URL + "#page=" + numPagina;
+    }
+
+    // Página inicial al cargar (portada)
+    window.addEventListener("load", function () {
+      abrirPagina(1);
+    });
+  </script>
+
+</body>
+</html>
